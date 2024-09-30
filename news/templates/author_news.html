@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author.first_name }} {{ author.last_name }}'s Articles</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/author_news.css' %}">
+</head>
+<body>
+    <h1>Articles by {{ author.first_name }} {{ author.last_name }}</h1>
+    <ul>
+        {% for news in author.news_set.all %}
+            <li>
+                <a href="{% url 'news_detail' news.id %}">{{ news.title }}</a>
+            </li>
+        {% empty %}
+            <li>No articles available for this author.</li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='{% url 'authors_list' %}'">Back to Authors List</button>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All News</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news_list.css' %}">
+</head>
+<body>
+    <h1>All News</h1>
+    <ul>
+        {% for news in news_list %}
+            <li>
+                <a href="{% url 'news_detail' news.id %}">{{ news.title }}</a> by {{ news.author }} on {{ news.pub_date }}
+            </li>
+        {% empty %}
+            <li>No news available.</li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='{% url 'home' %}'">Back to Home</button>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news_detail.css' %}">
+</head>
+<body>
+    <h1>{{ news.title }}</h1>
+    <p>by {{ news.author }} on {{ news.pub_date }}</p>
+    <p>{{ news.full_text }}</p>
+    <button onclick="window.location.href='{% url 'news_list' %}'">Back to News List</button>
+</body>
+</html>
