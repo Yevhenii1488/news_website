@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>{{ news.title }}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/authors/">Authors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="news-title">{{ news.title }}</h1>
+
+    <p class="news-author">By <a href="{% url 'author_news' news.author.id %}">{{ news.author }}</a> on {{ news.pub_date }}</p>
+
+    <div class="news-full-text">
+        <p>{{ news.full_text }}</p>
+    </div>
+
+    <a href="/news/" class="read-more">Back to News List</a>
+</body>
+</html>

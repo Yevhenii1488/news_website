@@ -1,0 +1,88 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header nav ul {
+    background-color: #1f1f1f;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: orange;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.page-title {
+    text-align: center;
+    color: white;
+}
+
+.news-list, .author-list {
+    margin: 20px;
+}
+
+.news-item, .author-item {
+    border-bottom: 1px solid #555;
+    padding: 10px 0;
+}
+
+.news-title, .author-name {
+    color: orange;
+    font-size: 1.8em;
+}
+
+.news-title a, .author-name a {
+    color: orange;
+    text-decoration: none;
+}
+
+.news-title a:hover, .author-name a:hover {
+    text-decoration: underline;
+}
+
+.news-author, .author-bio {
+    font-size: 1em;
+    color: white;
+}
+
+.news-author a, .author-bio a {
+    color: orange;
+    text-decoration: none;
+}
+
+.news-author a:hover, .author-bio a:hover {
+    text-decoration: underline;
+}
+
+.news-summary, .author-summary {
+    font-size: 1.1em;
+}
+
+.read-more {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.read-more:hover {
+    background-color: darkorange;
+}
