@@ -2,21 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Authors List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/authors_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Authors</title>
 </head>
 <body>
-    <h1>Authors</h1>
-    <ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/authors/">Authors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="page-title">Authors</h1>
+
+    <div class="author-list">
         {% for author in authors %}
-            <li>
-                <a href="{% url 'author_news' author.id %}">{{ author.first_name }} {{ author.last_name }}</a>
-            </li>
-        {% empty %}
-            <li>No authors available.</li>
+        <div class="author-item">
+            <h2 class="author-name"><a href="{% url 'author_news' author.id %}">{{ author.first_name }} {{ author.last_name }}</a></h2>
+            <p class="author-bio">{{ author.bio }}</p>
+        </div>
         {% endfor %}
-    </ul>
-    <button onclick="window.location.href='{% url 'home' %}'">Back to Home</button>
+    </div>
+
+    <a href="/" class="read-more">Back to Home</a>
 </body>
 </html>

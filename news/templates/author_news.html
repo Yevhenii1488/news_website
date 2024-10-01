@@ -2,21 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ author.first_name }} {{ author.last_name }}'s Articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/author_news.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>{{ author.first_name }} {{ author.last_name }} - Articles</title>
 </head>
 <body>
-    <h1>Articles by {{ author.first_name }} {{ author.last_name }}</h1>
-    <ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/authors/">Authors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="page-title">Articles by {{ author.first_name }} {{ author.last_name }}</h1>
+
+    <div class="news-list">
         {% for news in author.news_set.all %}
-            <li>
-                <a href="{% url 'news_detail' news.id %}">{{ news.title }}</a>
-            </li>
-        {% empty %}
-            <li>No articles available for this author.</li>
+        <div class="news-item">
+            <h2 class="news-title"><a href="{% url 'news_detail' news.id %}">{{ news.title }}</a></h2>
+            <p class="news-author">By <a href="{% url 'author_news' news.author.id %}">{{ news.author }}</a> on {{ news.pub_date }}</p>
+            <p class="news-summary">{{ news.summary }}</p>
+        </div>
         {% endfor %}
-    </ul>
-    <button onclick="window.location.href='{% url 'authors_list' %}'">Back to Authors List</button>
+    </div>
+
+    <a href="/authors/" class="read-more">Back to Authors</a>
 </body>
 </html>

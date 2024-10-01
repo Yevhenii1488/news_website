@@ -2,21 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/news_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>All News</title>
 </head>
 <body>
-    <h1>All News</h1>
-    <ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/authors/">Authors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="page-title">All News</h1>
+
+    <div class="news-list">
         {% for news in news_list %}
-            <li>
-                <a href="{% url 'news_detail' news.id %}">{{ news.title }}</a> by {{ news.author }} on {{ news.pub_date }}
-            </li>
-        {% empty %}
-            <li>No news available.</li>
+        <div class="news-item">
+            <h2 class="news-title"><a href="{% url 'news_detail' news.id %}">{{ news.title }}</a></h2>
+            <p class="news-author">By <a href="{% url 'author_news' news.author.id %}">{{ news.author }}</a> on {{ news.pub_date }}</p>
+            <p class="news-summary">{{ news.summary }}</p>
+        </div>
         {% endfor %}
-    </ul>
-    <button onclick="window.location.href='{% url 'home' %}'">Back to Home</button>
+    </div>
+
+    <a href="/" class="read-more">Back to Home</a>
 </body>
 </html>
